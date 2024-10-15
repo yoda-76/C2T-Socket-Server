@@ -3,7 +3,7 @@ import Redis from "ioredis";
 import cookieParser from "cookie-parser";
 import { createServer } from "node:http";
 import { Server as WebSocketServer } from "socket.io";
-const redisClient = new Redis("rediss://default:AeQcAAIjcDE0MjMyYTMzNDEwYzc0Y2ZiOWFkMzk1M2JlZTgwM2IwMHAxMA@helpful-polliwog-58396.upstash.io:6379");
+const redisClient = new Redis("redis://127.0.0.1:6379");
 
 const port = process.env.PORT || 4001;
 const app = express();
@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 redisClient.subscribe("marketTicks");
 redisClient.on("message", (channel, message) => {
   const ticks = JSON.parse(message);
+  // console.log(ticks);
   // Loop through each tick and emit it to the corresponding instrument token channel
   ticks.forEach((tick) => {
     io.to(`${tick.instrument_token}`).emit("marketData", tick);
