@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS stuff
-const allowedOrigins = ['http://localhost:5173', 'https://www.oidelta.com', 'https://oidelta.com'];
+const allowedOrigins = ['http://localhost:5173', 'https://www.oidelta.com', 'https://oidelta.com', 'https://cliq2trade.com', 'https://www.cliq2trade.com'];
 app.use((req, res, next) => {
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
