@@ -12,7 +12,7 @@ const httpServer = createServer(app);
 // Initialize WebSocket server
 const io = new WebSocketServer(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'https://www.oidelta.com', 'https://oidelta.com', 'https://cliq2trade.com', 'https://www.cliq2trade.com'],
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://www.oidelta.com', 'https://oidelta.com', 'https://cliq2trade.com', 'https://www.cliq2trade.com'],
     credentials: true
   }
 });
